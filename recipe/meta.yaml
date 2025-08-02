@@ -1,5 +1,5 @@
 {% set name = "fps-file-id" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/fps_file_id-{{ version }}.tar.gz
-  sha256: 5b1939625947687963c3f7d780293f6cd51a5bbcc2820fc0895ae6a11d3dc76d
+  sha256: 45f12662d1d0cfab6f0329cbe2494392b5eb2178c92dfbdec8e033b83062864c
 
 build:
   noarch: python
