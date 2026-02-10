@@ -1,0 +1,44 @@
+schema_version: 1
+
+context:
+  version: "0.3.8"
+
+package:
+  name: fps-auth
+  version: ${{ version }}
+
+source:
+  - url: https://pypi.org/packages/source/f/fps-file-id/fps_file_id-${{ version }}.tar.gz
+    sha256: bd70076c2f1fa78922880cf366d2300334cec97d0bf99da824f6dca8a6c3ef04
+
+build:
+  noarch: python
+  number: 0
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - uv-build
+  run:
+    - python >=${{ python_min }}
+    - jupyverse-api >=0.14.0,<0.15.0
+    - sqlite-anyio >=0.2.0,<0.3.0
+
+tests:
+  - python:
+      imports: fps_file_id
+      pip_check: true
+      python_version: ${{ python_min }}.*
+
+about:
+  license: BSD-3-Clause
+  license_file: COPYING.md
+  homepage: https://github.com/jupyter-server/jupyverse/tree/main/plugins/file_id
+  summary: An FPS plugin for the file ID API.
+
+extra:
+  recipe-maintainers:
+    - davidbrochart
